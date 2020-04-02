@@ -13,7 +13,7 @@ from django.db.models import Q
 # Create your views here.
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'tweetme/tweet_list.html')
 
 
 
@@ -49,11 +49,11 @@ class TweetListView(ListView):
        query=self.request.GET.get('q',None)
        if query is not None:
            qs=qs.filter(Q(content__icontains=query )| Q(user__username__icontains=query) )
-     
        return qs
-
     def get_context_data(self,*args,**kwargs):
         context=super(TweetListView,self).get_context_data(*args,**kwargs)
+        context['create_form']=TweetModelForm()
+        context['create_url']=reverse_lazy('tweets:create')
         return context
     
 

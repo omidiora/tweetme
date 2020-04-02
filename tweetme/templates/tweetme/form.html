@@ -1,6 +1,7 @@
-<form action="" method="POST">
+{% load cripsy_forms_tags %}
+<form action="{% if action_url  %}{{action_url}}{% endif %}" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-<input type="submit" value="{{btn_title}}">
+    {{form|crispy}}
+<button type="submit" value="{{btn_title}}" class="btn btn-danger">
 
 </form>

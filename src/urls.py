@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tweetme.urls',namespace="tweets")),
+    path('api/tweet/', include('tweetme.api.urls',namespace='tweet-api'))
 ]
 
 if settings.DEBUG:

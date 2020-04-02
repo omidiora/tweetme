@@ -1,21 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-{% include 'tweetme/search_form.html' %}<br>
 {% for object in object_list %}
-<div class="media">
-    {% if object.image %}
-    <img class="mr-3" src="..." alt="Generic placeholder image">
-    {% endif %}
-    <div class="media-body">
- {{object.content}}<br> via {{object.user}}<br>{{object.timestamp|timesince}} ago | <a href="{{object.get_absolute_url}}">View</a> </p><br><br>
+<div class="row">
  
+
+
+  </form>
+    <div class="col-sm-3 col-xs-12" style="background-color: yellow;">
+
+
+      <h1>{{request.user}}</h1>
+      {% include 'tweetme/form.html' with form=form action_url=create_url btn_title='Tweet' %}
+    </div>
+  <div class="col-sm-9">
+{{object.content}}<br> via {{object.user}}<br>{{object.timestamp|timesince}} ago | <a href="{{object.get_absolute_url}}">View</a> </p><br><br>
+<div class="media">
+
+  <a href="">
+
+    {% if object.image %}
+    <img class="media-object" src="..." alt="Generic placeholder image">
+    {% endif %}
+    </a>
+    <div class="media-body">
+
+ </div>
       
     </div>
   </div>
-<hr>
-
+</div>
+  <hr>
 
 {% empty %}
 {% if request.GET.q %}
@@ -25,5 +39,6 @@
 {% endif %}
 {% endfor %}
 {% endblock content %} 
+</div>
 </div>
 </div>
