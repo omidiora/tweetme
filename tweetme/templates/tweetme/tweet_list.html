@@ -1,7 +1,14 @@
+{% include 'tweetme/search_form.html' %}
 {% for object in object_list %}
 {{object.content}}<br>
 {{object.user}}<br>
 {{object.timestamp}}<br>
 {{object.timestamp|timesince}}<br>
 
-{% endfor %}
+{% empty %}
+{% if request.GET.q %}
+<p>No tweet yet.</p>
+{% else %}
+<p>No tweets yet.</p>
+{% endif %}
+{% endfor %} 
